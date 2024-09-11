@@ -1,0 +1,36 @@
+from __future__ import absolute_import
+
+from .random_sampling import RandomSampling
+from .entropy_sampling import EntropySampling
+from .badge_sampling import BadgeSampling
+from .coreset_sampling import CoresetSampling
+from .llal_sampling import LLALSampling
+from .montecarlo_sampling import MonteCarloSampling
+from .confidence_sampling import ConfidenceSampling
+from .crb_sampling import CRBSampling
+from .bald_sampling import BALDSampling
+from .kecor_sampling import KECORSampling
+from .rdc_sampling import  InstanceClusterWithFrameaGMMConciseRedundantDensityWeightedDynamicpowGlobalV28Smpling, InstanceClusterWithFrameaGMMConciseRedundantDensityWeightedDynamicpowGlobalV27Smpling, InstanceClusterWithFrameaGMMConciseRedundantDensityWeightedDynamicpowGlobalV26Smpling, InstanceClusterWithFrameaGMMConciseRedundantDensityWeightedDynamicpowGlobalV25Smpling, InstanceClusterWithFrameaGMMConciseRedundantDensityWeightedDynamicpowGlobalV24Smpling, InstanceClusterWithFrameaGMMConciseRedundantDensityWeightedDynamicpowGlobalV23Smpling, InstanceClusterWithFrameaGMMConciseRedundantDensityWeightedDynamicpowGlobalV22Smpling, InstanceClusterWithFrameaGMMConciseRedundantDensityWeightedDynamicpowGlobalV21Smpling, InstanceClusterWithFrameaGMMConciseRedundantDensityWeightedDynamicpowGlobalV20Smpling, InstanceClusterWithFrameaGMMConciseRedundantDensityWeightedDynamicpowGlobalV19Smpling, InstanceClusterWithFrameaGMMConciseRedundantDensityWeightedDynamicpowGlobalV18Smpling, InstanceClusterWithFrameaGMMConciseRedundantDensityWeightedDynamicpowGlobalV17Smpling,InstanceClusterWithFrameaGMMConciseRedundantDensityWeightedDynamicpowGlobalV16Smpling, InstanceClusterWithFrameaGMMConciseRedundantDensityWeightedDynamicpowGlobalV15Smpling, InstanceClusterWithFrameaGMMConciseRedundantDensityWeightedDynamicpowGlobalV14Smpling, InstanceClusterWithFrameaGMMConciseRedundantDensityWeightedDynamicpowGlobalV13Smpling, InstanceClusterWithFrameaGMMConciseRedundantDensityWeightedDynamicpowGlobalV12Smpling, InstanceClusterWithFrameaGMMConciseRedundantDensityWeightedDynamicpowGlobalV11Smpling, InstanceClusterWithFrameaGMMConciseRedundantDensityWeightedDynamicpowGlobalV10Smpling, InstanceClusterWithFrameaGMMConciseRedundantDensityWeightedDynamicpowGlobalV9Smpling, InstanceClusterWithFrameaGMMConciseRedundantDensityWeightedDynamicpowGlobalV8Smpling, InstanceClusterWithFrameaGMMConciseRedundantDensityWeightedDynamicpowGlobalV7Smpling, InstanceClusterWithFrameaGMMConciseRedundantDensityWeightedDynamicpowGlobalV5Smpling, InstanceClusterWithFrameaGMMConciseRedundantDensityWeightedV2Smpling, InstanceClusterWithFrameaGMMConciseRedundantDensityWeightedV3Smpling, InstanceClusterWithFrameaGMMConciseRedundantDensityWeightedDynamicpowGlobalV6Smpling
+from .ddfh_sampling import DDFHSmpling
+__factory = {
+    'random': RandomSampling,
+    'entropy': EntropySampling,
+    'badge': BadgeSampling,
+    'bald': BALDSampling,
+    'coreset': CoresetSampling,
+    'llal': LLALSampling,
+    'montecarlo': MonteCarloSampling,
+    'confidence': ConfidenceSampling,
+    'crb': CRBSampling,
+    'kecor': KECORSampling,
+    'ddfh' : DDFHSmpling,
+    
+}
+
+def names():
+    return sorted(__factory.keys())
+
+def build_strategy(method, model, labelled_loader, unlabelled_loader, rank, active_label_dir, cfg):
+    if method not in __factory:
+        raise KeyError("Unknown query strategy:", method)
+    return __factory[method](model, labelled_loader, unlabelled_loader, rank, active_label_dir, cfg)
