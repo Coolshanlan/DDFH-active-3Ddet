@@ -8,8 +8,11 @@ This repo is modify from [ACTIVE-3D-DET](https://github.com/Luoyadan/CRB-active-
 
 -----------------------
 
-This work is the official Pytorch implementation of: **DDFH: Distribution Discrepancy and Feature Heterogeneity for
-Active 3D Object Detection**.
+This work is the official Pytorch implementation of: **[DDFH: Distribution Discrepancy and Feature Heterogeneity for
+Active 3D Object Detection](https://arxiv.org/abs/2409.05425)**.
+
+## News
+📢 Accepted to CoRL 2024
 
 
 ## Framework
